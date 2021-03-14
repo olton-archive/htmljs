@@ -65,6 +65,7 @@ import {main, Main} from "./standard/main"
 import {flexbox, Flexbox} from "./extended/flexbox"
 import {margin, Margin} from "./extended/margin"
 import {padding, Padding} from "./extended/padding"
+import {center, Center} from "./extended/center"
 
 export {
     br, Br, hr, Hr,
@@ -132,5 +133,6 @@ export {
 
     flexbox, Flexbox,
     margin, Margin,
-    padding, Padding
+    padding, Padding,
+    center, Center
 }

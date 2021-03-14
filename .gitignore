@@ -1,4 +1,5 @@
 .idea
+output
 lib
 dist
 packages/**/lib

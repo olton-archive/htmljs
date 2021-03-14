@@ -8,7 +8,7 @@
         "build-es": "rollup -c config/rollup.es.js",
         "build-umd": "rollup -c ./config/rollup.umd.js",
         "build": "rimraf -rf dist lib && npm run build-browser && npm run build-es && npm run build-umd",
-        "serve": "parcel ./test_html/index.html --open --out-dir .html"
+        "serve": "parcel ./test/html/index.html --open --out-dir output"
       },
     "dependencies": {
     }
