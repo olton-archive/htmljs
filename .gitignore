@@ -1,0 +1,14 @@
+.idea
+lib
+dist
+packages/**/lib
+packages/**/dist
+node_modules
+coverage
+packages/**/coverage
+*.bat
+.ftpauth
+*.log
+.jest-*
+.cache
+.coverage

@@ -1,0 +1,15 @@
+{
+    "name": "@htmljs/html",
+    "version": "1.0.0",
+    "main": "./src/index.js",
+    "license": "MIT",
+    "scripts": {
+        "build-browser": "rollup -c config/rollup.js && rollup -c config/rollup.min.js",
+        "build-es": "rollup -c config/rollup.es.js",
+        "build-umd": "rollup -c ./config/rollup.umd.js",
+        "build": "rimraf -rf dist lib && npm run build-browser && npm run build-es && npm run build-umd",
+        "serve": "parcel ./test_html/index.html --open --out-dir .html"
+      },
+    "dependencies": {
+    }
+}
