@@ -1,4 +1,6 @@
-import {dashedName, setClasses, setStyles} from "../../common";
+import {dashedName} from "../../common/dashed-name";
+import {setClasses} from "../../common/set-classes";
+import {setStyles} from "../../common/set-styles";
 import {universalAttributes} from "../../helpers/universal-attributes"
 
 export default class BaseElement {

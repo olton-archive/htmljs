@@ -1,4 +1,4 @@
-import {setStyles} from "../common";
+import {setStyles} from "../common/set-styles";
 
 export const createStyleElement = (content = '', media) => {
     let style = document.createElement("style")
