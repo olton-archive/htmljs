@@ -5,10 +5,12 @@ import commonjs from "rollup-plugin-commonjs"
 import {SRC, DIST_MODULE_UMD} from "./const"
 
 function modulesPaths() {
-    const standard = glob.sync(SRC + '/elements/standard/*.js')
-    const extended = glob.sync(SRC + '/elements/extended/*.js')
-
-    return standard.concat(extended)
+    return glob.sync(SRC + '/*/*.js', {
+        ignore: [
+            SRC + '/browser.js',
+            SRC + '/index.js',
+        ],
+    });
 }
 
 export default {

@@ -5,20 +5,20 @@ import commonjs from "rollup-plugin-commonjs"
 import {SRC, DIST_MODULE} from "./const"
 
 function modulesPaths() {
-    return glob.sync(SRC + '/*/*.js', {
-        ignore: [
-            SRC + '/browser.js',
-            SRC + '/index.js',
-        ],
-    });
+    const standard = glob.sync(SRC + '/elements/standard/*.js')
+    const extended = glob.sync(SRC + '/elements/extended/*.js')
+
+    return standard.concat(extended)
 }
+
+console.log(modulesPaths())
 
 export default {
     input: modulesPaths(),
     output: {
         dir: DIST_MODULE,
         format: 'es',
-        chunkFileNames: 'parts/[name].js',
+        chunkFileNames: 'internal/[name].js',
     },
     plugins: [babel(),
         resolve(),

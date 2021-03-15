@@ -1,5 +1,5 @@
 {
-  "name": "html-js",
+  "name": "htmljs",
   "version": "1.0.0",
   "private": true,
   "main": "packages/core/src/index.js",
@@ -11,17 +11,21 @@
     "html",
     "css",
     "javascript",
-    "render"
+    "render",
+    "metroui",
+    "metro4",
+    "metro5",
+    "bootstrap"
   ],
   "author": "Serhii Pimenov <serhii@pimenov.com.ua> (https://pimenov.com.ua)",
   "license": "MIT",
   "scripts": {
     "test": "lerna run test --stream",
-    "test:html": "lerna --scope @html-js/html exec -- npm run test",
+    "test:html": "lerna --scope @htmljs/html exec -- npm run test",
     "update:version": "lerna version --no-push",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "lerna run build --stream",
-    "build:html": "lerna --scope @html-js/html exec -- npm run build",
+    "build:html": "lerna --scope @htmljs/html exec -- npm run build",
     "publish": "lerna publish"
   },
   "devDependencies": {

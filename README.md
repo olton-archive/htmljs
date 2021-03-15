@@ -5,7 +5,7 @@ You can use **HtmlJS** with Webpack, Parcel or other builders or directly for us
 
 **HtmlJS** is a monorepo with parts:
 
-- [x] `html` - standard **HTML** elements and simple extends (`center`, `padding`, `flexbox`, ...)
+- [x] `html` - standard **HTML** elements (`h1`, `p`, `div`, ...) and simple extends (`center`, `padding`, `flexbox`, ...)
 - [ ] `metro` - wrappers for [Metro 4](https://metroui.org.ua) components
 - [ ] `bootstrap` - wrappers for [Bootstrap](https://getbootstrap.com) components
 
