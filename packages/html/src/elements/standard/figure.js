@@ -11,3 +11,4 @@ export class FigCaption extends Tag {
 }
 
 export const figcaption = (children = '', options = {}) => new FigCaption(children, options)
+

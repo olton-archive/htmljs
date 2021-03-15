@@ -15,9 +15,10 @@
         html.registerGlobal();
 
         const view = [
-            center(
-                h1("Welcome to HtmlJS!")
-            ),
+            center([
+                h1("Welcome to HtmlJS!"),
+                figureSimple("https://picsum.photos/200", "Caption", "alt")
+            ]),
         ]
 
         render(view, document.querySelector('#app'));

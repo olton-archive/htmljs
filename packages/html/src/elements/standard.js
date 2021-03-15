@@ -66,6 +66,7 @@ import {flexbox} from "./extended/flexbox"
 import {margin} from "./extended/margin"
 import {padding} from "./extended/padding"
 import {center} from "./extended/center"
+import {figureSimple} from "./extended/figure"
 
 export {
     br, hr,
@@ -134,5 +135,6 @@ export {
     flexbox,
     margin,
     padding,
-    center
+    center,
+    figureSimple
 }

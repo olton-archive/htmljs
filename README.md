@@ -9,6 +9,16 @@ You can use **HtmlJS** with Webpack, Parcel or other builders or directly for us
 - [ ] `metro` - wrappers for [Metro 4](https://metroui.org.ua) components
 - [ ] `bootstrap` - wrappers for [Bootstrap](https://getbootstrap.com) components
 
+## Feedback from users
+```text
+I've been playing with HtmlJS (early RenderJS) and it's amazing how easy it is to learn. 
+The rendering is instantaneous, a table with 5 x 100K cells in 0.4 secs.
+
+I don't know if I will write html again.
+
+Rodrigo
+```
+
 ## Using example
 
 ### Browser
