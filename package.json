@@ -1,5 +1,5 @@
 {
-  "name": "htmljs",
+  "name": "html-js",
   "version": "1.0.0",
   "private": true,
   "main": "packages/core/src/index.js",
@@ -17,11 +17,12 @@
   "license": "MIT",
   "scripts": {
     "test": "lerna run test --stream",
-    "test:core": "lerna --scope @metro5/core exec -- npm run test",
+    "test:html": "lerna --scope @html-js/html exec -- npm run test",
     "update:version": "lerna version --no-push",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "lerna run build --stream",
-    "build:html": "lerna --scope @htmljs/html exec -- npm run build"
+    "build:html": "lerna --scope @html-js/html exec -- npm run build",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",

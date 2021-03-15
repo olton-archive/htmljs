@@ -1,8 +1,14 @@
 {
-    "name": "@htmljs/html",
+    "name": "@html-js/html",
     "version": "1.0.0",
     "main": "./src/index.js",
     "license": "MIT",
+    "files": [
+        "LICENSE",
+        "README.md",
+        "dist",
+        "src"
+    ],
     "scripts": {
         "build-browser": "rollup -c config/rollup.js && rollup -c config/rollup.min.js",
         "build-es": "rollup -c config/rollup.es.js",
