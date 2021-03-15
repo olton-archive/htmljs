@@ -30,6 +30,17 @@ You can use **HtmlJS** with Webpack, Parcel or other builders or directly for us
     (function(){
         html.registerGlobal();
 
+        addStyle({
+            "body, #app": {
+                height: "100vh"
+            },
+            "body": {
+                background: "#ccc",
+                margin: 0,
+                padding: 0
+            }
+        })
+
         const view = [
             flexbox([
                 h1("Welcome to HtmlJS!"),
