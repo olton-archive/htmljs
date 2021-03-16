@@ -67,6 +67,7 @@ import {margin} from "./extended/margin"
 import {padding} from "./extended/padding"
 import {center} from "./extended/center"
 import {figureSimple} from "./extended/figure"
+import {grid, gridItem} from "./extended/grid"
 
 export {
     br, hr,
@@ -136,5 +137,6 @@ export {
     margin,
     padding,
     center,
-    figureSimple
+    figureSimple,
+    grid, gridItem
 }

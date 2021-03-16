@@ -19,25 +19,23 @@
                 height: "100vh"
             },
             "body": {
-                background: "#ccc",
+                background: "#fff",
                 margin: 0,
                 padding: 0
             }
         })
 
         const view = [
-            flexbox([
-                h1("Welcome to HtmlJS!"),
-                figureSimple("https://picsum.photos/200", "Caption", "alt")
+            grid([
+                gridItem("Item 1"),
+                gridItem("Item 2"),
+                gridItem("Item 3"),
+                gridItem("Item 4"),
             ], {
-                justify: "center",
-                align: "center",
-                direction: "column",
-                style: {
-                    height: "100%"
-                }
-            }),
+                templateColumns: "1fr 1fr"
+            })
         ]
+
 
         render(view, '#app');
 
