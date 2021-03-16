@@ -5,12 +5,9 @@ import commonjs from "rollup-plugin-commonjs"
 import {SRC, DIST_MODULE_UMD} from "./const"
 
 function modulesPaths() {
-    return glob.sync(SRC + '/*/*.js', {
-        ignore: [
-            SRC + '/browser.js',
-            SRC + '/index.js',
-        ],
-    });
+    const components = glob.sync(SRC + '/components/*.js')
+
+    return components
 }
 
 export default {

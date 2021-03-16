@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//cdn.metroui.org.ua/v4-dev/css/metro-all.min.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="//cdn.metroui.org.ua/v4-dev/js/metro.min.js"></script>
+<script src="../../../html/lib/htmljs.js"></script>
+<script src="../../lib/metro4-htmljs.js"></script>
+<script>
+    (function(){
+        html.registerGlobal();
+
+        const articleView = article([
+            h1("This is a title"),
+            section([
+                p(`
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Accusamus aliquam culpa debitis distinctio nesciunt?
+                        Aliquid animi atque blanditiis, explicabo facilis magnam
+                        modi nihil nostrum nulla perspiciatis qui recusandae sed, vero!
+                    `),
+                accordion([
+                    accordionFrame("Frame1", "lorem1"),
+                    accordionFrame("Frame2", "lorem1"),
+                    accordionFrame("Frame3", "lorem1"),
+                ])
+            ])
+        ])
+
+        const view = [
+            header('header'),
+            main([articleView]),
+            footer('footer')
+        ]
+
+        render(view, '#app');
+
+        html.restoreGlobal();
+    })()
+</script>
+</body>
+</html>

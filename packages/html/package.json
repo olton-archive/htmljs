@@ -11,7 +11,7 @@
         "src"
     ],
     "scripts": {
-        "build-browser": "rollup -c config/rollup.js && rollup -c config/rollup.min.js",
+        "build-browser": "rollup -c config/rollup.js && rollup -c config/rollup.minify.js",
         "build-es": "rollup -c config/rollup.es.js && rollup -c config/rollup.es.all.js",
         "build-umd": "rollup -c config/rollup.umd.js && rollup -c config/rollup.umd.all.js",
         "build": "rimraf -rf dist lib && npm run build-browser && npm run build-es && npm run build-umd",

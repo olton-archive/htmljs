@@ -11,8 +11,6 @@ function modulesPaths() {
     return standard.concat(extended)
 }
 
-console.log(modulesPaths())
-
 export default {
     input: modulesPaths(),
     output: {

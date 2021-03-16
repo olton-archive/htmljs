@@ -8,7 +8,7 @@ import {SRC, DIST_LIB} from "./const"
 export default {
     input: `${SRC}/browser.js`,
     output: {
-        file: `${DIST_LIB}/html.min.js`,
+        file: `${DIST_LIB}/htmljs.min.js`,
         format: 'iife',
         name: "",
         sourcemap: false,
