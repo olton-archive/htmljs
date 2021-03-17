@@ -11,8 +11,15 @@
 <div id="app"></div>
 <script src="../../lib/htmljs.js"></script>
 <script>
-    (function(){
+    ( () => {
         html.registerGlobal();
+
+        window.openPage = async (path) => {
+            const page = await html.jsLoader(path)
+            html.render(page, '#main', {
+                clear: true
+            });
+        }
 
         addStyle({
             "body, #app": {
@@ -22,25 +29,34 @@
                 background: "#fff",
                 margin: 0,
                 padding: 0
+            },
+            a: {
+                margin: "0 10px"
             }
         })
 
         const view = [
-            grid([
-                gridItem("Item 1"),
-                gridItem("Item 2"),
-                gridItem("Item 3"),
-                gridItem("Item 4"),
-            ], {
-                templateColumns: "1fr 1fr"
+            flexbox(
+                [
+                    a("#", "Page 1", {events: {onclick: "openPage('page1.js')"}}),
+                    a("#", "Page 2", {events: {onclick: "openPage('page2.js')"}}),
+                    a("#", "Page 3", {events: {onclick: "openPage('page3.js')"}}),
+                ]
+            , {
+                    justify: "center"
+            }),
+
+            main("", {
+                id: "main"
             })
         ]
 
+        render(view, '#app')
 
-        render(view, '#app');
+        openPage('page1.js')
 
-        html.restoreGlobal();
-    })()
+        html.restoreGlobal()
+    } )()
 </script>
 </body>
 </html>

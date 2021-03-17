@@ -3,6 +3,8 @@ import Tag from "./elements/core/tag"
 import TagEmpty from "./elements/core/tag-empty"
 import {render} from "./render"
 import {addStyle, createStyleElement, createStyleSheet, addCssRule} from "./style"
+import {jsLoader} from "./loader/js-loader"
+import {cssLoader} from "./loader/css-loader"
 
 export {
     BaseElement,
@@ -12,6 +14,8 @@ export {
     addStyle,
     createStyleElement,
     createStyleSheet,
-    addCssRule
+    addCssRule,
+    jsLoader,
+    cssLoader
 }
 export * from "./elements"

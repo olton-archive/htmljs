@@ -5,7 +5,7 @@ import {br} from "./standard/br"
 import {hr} from "./standard/hr"
 import {title, h1, h2, h3, h4, h5, h6} from "./standard/title"
 import {section} from "./standard/section"
-import {anchor, a, anchor2} from "./standard/anchor"
+import {anchor, a} from "./standard/anchor"
 import {abbr} from "./standard/abbr"
 import {article} from "./standard/article"
 import {nav} from "./standard/nav"
@@ -67,7 +67,7 @@ import {margin} from "./extended/margin"
 import {padding} from "./extended/padding"
 import {center} from "./extended/center"
 import {figureSimple} from "./extended/figure"
-import {grid, gridItem} from "./extended/grid"
+import {cssGrid, cssGridItem} from "./extended/grid"
 
 export {
     br, hr,
@@ -76,7 +76,7 @@ export {
     input, input2,
     title, h1, h2, h3, h4, h5, h6,
     section,
-    anchor, a, anchor2,
+    anchor, a,
     abbr,
     article,
     nav,
@@ -138,5 +138,5 @@ export {
     padding,
     center,
     figureSimple,
-    grid, gridItem
+    cssGrid, cssGridItem
 }

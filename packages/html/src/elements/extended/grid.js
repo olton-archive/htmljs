@@ -1,7 +1,7 @@
 import Tag from "../core/tag"
 import {dashedName} from "../../common/dashed-name";
 
-export class Grid extends Tag {
+export class CssGrid extends Tag {
     constructor(children = '', options = {}) {
         let {style = {}} = options
         const props = ["gap", "templateRows", "templateColumns", "templateAreas", "autoRows", "autoColumns", "autoFlow"]
@@ -18,9 +18,9 @@ export class Grid extends Tag {
     }
 }
 
-export const grid = (children, options) => new Grid(children, options)
+export const cssGrid = (children, options) => new CssGrid(children, options)
 
-export class GridItem extends Tag {
+export class CssGridItem extends Tag {
     constructor(children = '', options = {}) {
         let {style = {}} = options
         const props = ["rowStart", "rowEnd", "columnStart", "columnEnd", "area", "column", "row"]
@@ -39,4 +39,4 @@ export class GridItem extends Tag {
     }
 }
 
-export const gridItem = (children, options) => new GridItem(children, options)
+export const cssGridItem = (children, options) => new CssGridItem(children, options)

@@ -3,6 +3,8 @@ import Tag from "./elements/core/tag"
 import TagEmpty from "./elements/core/tag-empty"
 import {render} from "./render"
 import {addStyle, createStyleElement, createStyleSheet, addCssRule} from "./style"
+import {jsLoader} from "./loader/js-loader"
+import {cssLoader} from "./loader/css-loader"
 import * as html from "./elements"
 
 window.html = {
@@ -14,7 +16,9 @@ window.html = {
     render,
     BaseElement,
     Tag,
-    TagEmpty
+    TagEmpty,
+    jsLoader,
+    cssLoader
 }
 
 window.__htmlSaver = {}

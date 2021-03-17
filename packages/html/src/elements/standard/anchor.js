@@ -9,5 +9,4 @@ export class Anchor extends Tag {
 }
 
 export const anchor = (children = '', options = {}) => new Anchor(children, options)
-export const a = (children = '', options = {}) => new Anchor(children, options)
-export const anchor2 = (href = '#', children = '', options = {}) => new Anchor(children, {...options, href})
+export const a = (href = '#', children = '', options = {}) => new Anchor(children, {...options, href})
