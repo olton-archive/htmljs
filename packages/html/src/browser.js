@@ -2,23 +2,18 @@ import BaseElement from "./elements/core/base"
 import Tag from "./elements/core/tag"
 import TagEmpty from "./elements/core/tag-empty"
 import {render} from "./render"
-import {addStyle, createStyleElement, createStyleSheet, addCssRule} from "./style"
-import {jsLoader} from "./loader/js-loader"
-import {cssLoader} from "./loader/css-loader"
+import * as styleRoutines from "./style"
 import * as html from "./elements"
+import * as loaders from "./loaders"
 
 window.html = {
     ...html,
-    addStyle,
-    createStyleElement,
-    createStyleSheet,
-    addCssRule,
-    render,
     BaseElement,
     Tag,
     TagEmpty,
-    jsLoader,
-    cssLoader
+    render,
+    ...loaders,
+    ...styleRoutines,
 }
 
 window.__htmlSaver = {}

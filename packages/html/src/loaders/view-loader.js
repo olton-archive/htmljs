@@ -1,4 +1,4 @@
-export const jsLoader = async (path, options) => {
+export const viewLoader = async (path, options) => {
     let response = await fetch(path, options), textNode, result = () => {}
 
     if (!response.ok) {
