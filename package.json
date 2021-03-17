@@ -26,6 +26,7 @@
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "lerna run build --stream",
     "build:html": "lerna --scope @htmljs/html exec -- npm run build",
+    "build:metro4": "lerna --scope @htmljs/metro4 exec -- npm run build",
     "publish": "lerna publish"
   },
   "devDependencies": {
@@ -44,6 +45,7 @@
     "rollup": "^2.41.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.17",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2"
   }
