@@ -3,7 +3,7 @@ import {img, img2} from "./standard/Image"
 import {input, input2} from "./standard/input"
 import {br} from "./standard/br"
 import {hr} from "./standard/hr"
-import {title, h1, h2, h3, h4, h5, h6} from "./standard/title"
+import {h1, h2, h3, h4, h5, h6} from "./standard/title"
 import {section} from "./standard/section"
 import {anchor, a} from "./standard/anchor"
 import {abbr} from "./standard/abbr"
@@ -69,12 +69,15 @@ import {center} from "./extended/center"
 import {figureSimple} from "./extended/figure"
 import {cssGrid, cssGridItem} from "./extended/grid"
 
+import {meta, addMeta} from "./meta"
+import {title, addTitle} from "./title"
+
 export {
     br, hr,
     span,
     img, img2,
     input, input2,
-    title, h1, h2, h3, h4, h5, h6,
+    h1, h2, h3, h4, h5, h6,
     section,
     anchor, a,
     abbr,
@@ -138,5 +141,8 @@ export {
     padding,
     center,
     figureSimple,
-    cssGrid, cssGridItem
+    cssGrid, cssGridItem,
+
+    meta, addMeta,
+    title, addTitle
 }

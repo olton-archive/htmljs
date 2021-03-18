@@ -10,7 +10,7 @@ export default class TagEmpty extends BaseElement {
         const tag = this.options.tag ? this.options.tag : this.tag
 
         return `
-            <${tag} ${this.attributes().join(" ")} ${this.events}/>
+            <${tag} ${this.attributes} ${this.events}/>
         `
     }
 }

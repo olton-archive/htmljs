@@ -18,7 +18,7 @@ export class FigureSimple extends Tag {
 
     template() {
         return `
-            <${this.tag} ${this.attributes().join(" ")} ${this.events}>
+            <${this.tag} ${this.attributes} ${this.events}>
                 <img src="${this.img}" alt="${this.alt}">
                 <figcaption>${this.caption}</figcaption>            
             </${this.tag}>

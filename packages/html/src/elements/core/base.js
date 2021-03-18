@@ -13,7 +13,11 @@ export default class BaseElement {
         return []
     }
 
-    attributes(){
+    get attributes(){
+        return this.getAttributes().join(" ")
+    }
+
+    getAttributes(){
         let attr = [],
             single = ['hidden', 'disabled', 'required', 'readonly', 'selected', 'open', 'multiply', 'default'],
             service = ["className", "style", "data", "tag", "events"]
@@ -51,6 +55,19 @@ export default class BaseElement {
 
         for(let key in data) {
             _.push(`data-${dashedName(key)}="${data[key]}"`)
+        }
+
+        return _.join(" ")
+    }
+
+    get aria(){
+        const {aria = {}} = this.options
+        let _ = []
+
+        if (aria === {}) return ""
+
+        for(let key in aria) {
+            _.push(`data-${key.toLowerCase()}="${aria[key]}"`)
         }
 
         return _.join(" ")

@@ -9,7 +9,7 @@ export class MenuItem extends ListItem {
     template(content) {
         const href = this.href ? `href="${this.href}"` : ``
         return `
-            <${this.tag}  ${this.attributes().join(" ")}>
+            <${this.tag}  ${this.attributes}>
                 <a ${href} ${this.events}>${content}</a>
             </${this.tag}>
         `

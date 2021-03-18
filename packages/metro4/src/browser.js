@@ -1,23 +1,8 @@
 import * as html from "./index"
 
-const core = window.html || {}
+const core = window.htmljs || {}
 
-window.html = {
+window.htmljs = {
     ...core,
     ...html
 }
-
-// if (!window.__metroHtmlSaver) window.__metroHtmlSaver = {}
-//
-// window.metroHtml.registerGlobal = () => {
-//     for (let key in window.metroHtml) {
-//         window.__metroHtmlSaver[key] = window[key]
-//         window[key] = window.metroHtml[key]
-//     }
-// }
-//
-// window.metroHtml.restoreGlobal = () => {
-//     for (let key in window.__metroHtmlSaver) {
-//         window[key] = window.__metroHtmlSaver[key]
-//     }
-// }

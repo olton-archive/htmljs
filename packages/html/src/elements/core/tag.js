@@ -15,7 +15,7 @@ export default class Tag extends BaseElement {
         const tag = this.options.tag ? this.options.tag : this.tag
 
         return `
-            <${tag} ${this.attributes().join(" ")} ${this.events}>${content}</${tag}>
+            <${tag} ${this.attributes} ${this.events}>${content}</${tag}>
         `
     }
 

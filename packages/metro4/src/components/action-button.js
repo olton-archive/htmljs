@@ -9,7 +9,7 @@ export class ActionButton extends Button {
 
     template(content) {
         return `
-            <${this.tag} ${this.attributes().join(" ")} ${this.events}>
+            <${this.tag} ${this.attributes} ${this.events}>
                 <span class="icon">${content}</span>            
             </${this.tag}>
         `

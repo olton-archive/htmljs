@@ -16,6 +16,10 @@ export const render = (model = [], mountTo = document.body, options = {}) => {
         mount.innerHTML = ""
     }
 
+    if (!Array.isArray(model)) {
+        model = [model]
+    }
+
     html = model.map( parser ).join("")
     mount.insertAdjacentHTML(where, html)
 }

@@ -6,7 +6,7 @@ import * as styleRoutines from "./style"
 import * as html from "./elements"
 import * as loaders from "./loaders"
 
-window.html = {
+window.htmljs = {
     ...html,
     BaseElement,
     Tag,
@@ -18,14 +18,14 @@ window.html = {
 
 window.__htmlSaver = {}
 
-window.html.registerGlobal = () => {
-    for (let key in window.html) {
+window.htmljs.registerGlobal = () => {
+    for (let key in window.htmljs) {
         window.__htmlSaver[key] = window[key]
-        window[key] = window.html[key]
+        window[key] = window.htmljs[key]
     }
 }
 
-window.html.restoreGlobal = () => {
+window.htmljs.restoreGlobal = () => {
     for (let key in window.__htmlSaver) {
         window[key] = window.__htmlSaver[key]
     }

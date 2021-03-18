@@ -19,7 +19,7 @@ export class AccordionFrame extends Div {
 
     template(content){
         return `
-            <${this.tag} ${this.attributes().join(" ")} ${this.events}>
+            <${this.tag} ${this.attributes} ${this.events}>
                 <div class="heading">${this.title}</div>
                 <div class="content">${content}</div>
             </${this.tag}>
