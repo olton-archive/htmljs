@@ -29,9 +29,7 @@ const view = [
 
 render(view, "#app")
 
-const renderPage = (text) => {
-    render([text], "#h1")
-}
+const renderPage = (text) => render([text], "#h1")
 
 router()
     .addRoutes({
