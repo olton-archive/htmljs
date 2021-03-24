@@ -3,14 +3,24 @@ export class Router {
     route = '/'
     mode = null
     ignore = '[data-route-ignore]'
-    root = '/'
+    root = ''
 
     constructor(options = {}) {
         this.options = Object.assign({}, this.options, options)
+
+        if (this.options.root) this.root = this.options.root
+        if (this.options.mode) this.mode = this.options.mode
+        if (this.options.ignore) this.ignore = this.options.ignore
+        if (this.options.routes) this.addRoutes(this.options.routes)
     }
 
     clearSlashes(path) {
         return path.replace(/\/$/, '').replace(/^\//, '')
+    }
+
+    setRoot(root){
+        this.root = root
+        return this
     }
 
     index(path){
@@ -46,10 +56,11 @@ export class Router {
 
     addRoute(path, callback){
         if (path && !this.routeExists(path)) {
+            let _path = this.root + path
             this.routes.push({
-                path: path,
+                path: _path,
                 callback: callback,
-                pattern: new RegExp('^' + path.replace(/:\w+/g,'(\\w+)') + '$'),
+                pattern: new RegExp('^' + _path.replace(/:\w+/g,'(\\w+)') + '$'),
             })
         }
 
