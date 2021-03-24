@@ -1,6 +1,5 @@
-import 'regenerator-runtime/runtime'
-import {render, router, header, flexbox, a, center, h1} from "../../src"
-import {addStyle} from "../../src";
+import 'regenerator-runtime/runtime' // this required for Parcel
+import {addStyle, render, router, header, flexbox, a, center, h1} from "../../src"
 
 addStyle({
     "body": {
@@ -31,8 +30,7 @@ const view = [
 render(view, "#app")
 
 const renderPage = (text) => {
-    const view = [text]
-    render(view, "#h1")
+    render([text], "#h1")
 }
 
 router()

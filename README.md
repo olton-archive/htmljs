@@ -64,4 +64,66 @@ You can use **HtmlJS** with Webpack, Parcel or other builders or directly for us
 </html>
 ```
 
-### Webpack
+### Parcel, SPA example 
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="index.js"></script>
+</body>
+</html>
+```
+and
+```javascript
+import 'regenerator-runtime/runtime' // this required for Parcel
+import {addStyle, render, router, header, flexbox, a, center, h1} from "../../src"
+
+addStyle({
+    "body": {
+        margin: 0,
+        padding: 0
+    },
+
+    a: {
+        margin: "10px"
+    }
+})
+
+const view = [
+    header([
+        flexbox([
+            a('/', 'Home'),
+            a('/contacts', 'Contacts'),
+            a('/catalog/category1/product2', 'Product'),
+        ], {
+            justify: "center"
+        })
+    ]),
+    center(
+        h1("", {id: "h1"})
+    )
+]
+
+render(view, "#app")
+
+const renderPage = (text) => {
+    render([text], "#h1")
+}
+
+router()
+    .addRoutes({
+        "/": () => renderPage('root'),
+        "/contacts": () => renderPage('contacts'),
+        "/catalog/:category/:product": () => renderPage('products')
+    })
+    .listen()
+    .exec()
+```
