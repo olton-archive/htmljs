@@ -19,7 +19,8 @@ export default {
         format: 'cjs',
         chunkFileNames: 'parts/[name].js',
     },
-    plugins: [babel(),
+    plugins: [
+        babel({ runtimeHelpers: true }),
         resolve(),
         commonjs()
     ],

@@ -25,3 +25,5 @@ export const viewLoader = async (path, options = {}, storage = false) => {
 
     return typeof result === "function" ? result() : result
 }
+
+export const clearViewStorageHolder = path => localStorage.removeItem(`htmljs::key::${path}`)

@@ -15,7 +15,7 @@ export default {
         exports: 'named',
     },
     plugins: [
-        babel(),
+        babel({ runtimeHelpers: true }),
         resolve(),
         commonjs()
     ],

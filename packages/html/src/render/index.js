@@ -1,6 +1,6 @@
 import {parser} from "../parser"
 
-export const render = (model = [], mountTo = document.body, options = {}) => {
+export const render = (view = [], mountTo = document.body, options = {}) => {
     let html, mount
 
 
@@ -16,10 +16,10 @@ export const render = (model = [], mountTo = document.body, options = {}) => {
         mount.innerHTML = ""
     }
 
-    if (!Array.isArray(model)) {
-        model = [model]
+    if (!Array.isArray(view)) {
+        view = [view]
     }
 
-    html = model.map( parser ).join("")
+    html = view.map( parser ).join("")
     mount.insertAdjacentHTML(where, html)
 }

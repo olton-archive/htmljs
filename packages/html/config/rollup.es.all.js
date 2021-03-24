@@ -18,7 +18,8 @@ export default {
         format: 'es',
         chunkFileNames: 'internal/[name].js',
     },
-    plugins: [babel(),
+    plugins: [
+        babel({ runtimeHelpers: true }),
         resolve(),
         commonjs()
     ],

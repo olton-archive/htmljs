@@ -5,6 +5,7 @@ import {render} from "./render"
 import * as styleRoutines from "./style"
 import * as html from "./elements"
 import * as loaders from "./loaders"
+import * as router from "./router"
 
 window.htmljs = {
     ...html,
@@ -14,6 +15,7 @@ window.htmljs = {
     render,
     ...loaders,
     ...styleRoutines,
+    ...router
 }
 
 window.__htmlSaver = {}

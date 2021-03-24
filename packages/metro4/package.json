@@ -15,7 +15,8 @@
         "build-es": "rollup -c config/rollup.es.js && rollup -c config/rollup.es.all.js",
         "build-umd": "rollup -c config/rollup.umd.js && rollup -c config/rollup.umd.all.js",
         "build": "rimraf -rf dist lib && npm run build-browser && npm run build-es && npm run build-umd",
-        "serve": "parcel test/html/index.html --open --out-dir output"
+        "serve": "parcel test/html/index.html --open --out-dir output",
+        "serve-es": "parcel test/html_es/index.html --open --out-dir output"
       },
     "dependencies": {
         "@htmljs/html": "^1.0.0"
