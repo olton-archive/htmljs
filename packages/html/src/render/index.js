@@ -4,7 +4,7 @@ export const render = (view = [], mountTo = document.body, options = {}) => {
     let html, mount
 
 
-    const {clear = false, where = 'beforeend'} = options
+    const {clear = true, where = 'beforeend'} = options
 
     mount = typeof mountTo === "string" ? document.querySelector(mountTo) : mountTo
 

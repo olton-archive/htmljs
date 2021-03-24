@@ -32,7 +32,7 @@ render(view, "#app")
 
 const renderPage = (text) => {
     const view = [text]
-    render(view, "#h1", {clear: true})
+    render(view, "#h1")
 }
 
 router()
