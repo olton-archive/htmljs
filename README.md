@@ -1,8 +1,8 @@
 # Welcome to HtmlJS
 
-**HtmlJS** - is a library to create a site in pure JavaScript. **HtmlJS** contains functions to create `standard html tags`,  
-usefulness `extensions for standard tags`, a `Router` to create **SPA** (single page application), wrappers for awesome frameworks (metro4 - in develop).
-You can use **HtmlJS** with Webpack, Parcel or other builders or directly for using in the browser with pre-built version of the library. 
+**HtmlJS** - is a library to create a site in pure JavaScript. **HtmlJS** contains functions to create `standard` html tags,  
+usefulness `extensions` for standard tags, a `Router` to create `SPA` (single page application), wrappers for awesome frameworks (metro4 - in develop).
+You can use **HtmlJS** with `Webpack`, `Parcel` or other builders or `directly` for using in the browser with pre-built version of the library. 
 
 **HtmlJS** is a monorepo with parts:
 
