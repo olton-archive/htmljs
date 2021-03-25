@@ -26,5 +26,5 @@ export const addMeta = options => {
         }
     })
 
-    render(metaElement, document.head)
+    render(metaElement, document.head, {clear: false})
 }

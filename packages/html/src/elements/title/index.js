@@ -14,5 +14,5 @@ export const addTitle = text => {
         t.remove()
     }
 
-    render(title(text), document.head)
+    render(title(text), document.head, {clear: false})
 }

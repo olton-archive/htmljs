@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="../../lib/htmljs.js"></script>
+    <script>
+        htmljs.registerGlobal()
+
+        addStyle({
+            body: {
+                margin: 0,
+                padding: 0,
+                fontFamily: "Roboto, sans-serif",
+                background: "#ccc"
+            },
+            "#controls button": {
+                margin: "0 4px"
+            },
+            "#work-table": {
+            },
+            a: {
+                margin: "10px"
+            }
+        })
+
+        addMeta({
+            name: "author",
+            content: "Serhii Pimenov"
+        })
+
+        addTitle("HTML.JS :: ToDo Example")
+
+        const elWidth = "340px"
+
+        const appView = [
+            center(h1("HtmlJS - ToDo Example")),
+            flexbox([
+                button("Add", {
+                    events: {
+                        onclick: `addItem()`
+                    }
+                }),
+                button("Delete", {
+                    events: {
+                        onclick: "deleteItems()"
+                    }
+                }),
+                button("Clear", {
+                    events: {
+                        onclick: "clearPanel()"
+                    }
+                }),
+            ], {
+                justify: "center",
+                id: "controls"
+            }),
+            flexbox([
+                    input({
+                        id: "input",
+                        type: "text",
+                        placeholder: "Enter item name and press ADD button...",
+                        style: {
+                            marginTop: "10px",
+                            width: elWidth,
+                            padding: "10px"
+                        }
+                    }),
+                    div("", {
+                        style: {
+                            width: elWidth,
+                            marginTop: "10px",
+                            padding: "10px"
+                        },
+                        id: "panel"
+                    })]
+                , {
+                    align: "center",
+                    direction: "column",
+                    id: "work-table"
+                }
+            ),
+            center(
+                a("#", "Copyright &copy; 2021 Serhii Pimenov")
+            )
+        ]
+
+        render(appView, "#app")
+
+        const addItem = function() {
+            const inp = document.querySelector("#input")
+            const val = inp.value
+
+            htmljs.registerGlobal(this)
+
+            render(
+                div([
+                    input({
+                        type: "checkbox"
+                    }),
+                    span(val)
+                ])
+                , "#panel", {clear: false})
+
+            inp.value = ""
+            inp.focus()
+        }
+
+        const clearPanel = () => {
+            const panel = document.querySelector("#panel")
+            panel.innerHTML = ""
+        }
+
+        const deleteItems = () => {
+            const checks = document.querySelectorAll("input:checked")
+            checks.forEach( el => {
+                el.parentNode.remove()
+            } )
+        }
+
+        htmljs.restoreGlobal()
+    </script>
+</body>
+</html>

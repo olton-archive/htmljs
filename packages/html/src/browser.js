@@ -7,7 +7,7 @@ import * as html from "./elements"
 import * as loaders from "./loaders"
 import * as router from "./router"
 
-window.htmljs = {
+globalThis.htmljs = {
     ...html,
     BaseElement,
     Tag,
@@ -18,18 +18,18 @@ window.htmljs = {
     ...router
 }
 
-window.__htmlSaver = {}
+globalThis.__htmlSaver = {}
 
-window.htmljs.registerGlobal = () => {
-    for (let key in window.htmljs) {
-        window.__htmlSaver[key] = window[key]
-        window[key] = window.htmljs[key]
+globalThis.htmljs.registerGlobal = (ctx = globalThis) => {
+    for (let key in globalThis.htmljs) {
+        globalThis.__htmlSaver[key] = globalThis[key]
+        ctx[key] = globalThis.htmljs[key]
     }
 }
 
-window.htmljs.restoreGlobal = () => {
-    for (let key in window.__htmlSaver) {
-        window[key] = window.__htmlSaver[key]
+globalThis.htmljs.restoreGlobal = (ctx = globalThis) => {
+    for (let key in globalThis.__htmlSaver) {
+        ctx[key] = globalThis.__htmlSaver[key]
     }
 }
 

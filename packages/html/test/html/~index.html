@@ -17,10 +17,10 @@
         "body, #app": {
             height: "100vh"
         },
-        "body": {
+        body: {
             background: "#fff",
             margin: 0,
-            padding: 0
+            padding: "0"
         },
         a: {
             margin: "0 10px"
@@ -59,16 +59,15 @@
 
     render(view, '#app')
 
-    console.log(router().exec)
-
-    htmljs.restoreGlobal()
-
     window.routines = {
-        openPage: async (path) => {
-            const page = await htmljs.viewLoader(path)
-            htmljs.render(page, '#main', {
+        openPage: async function(path) {
+            htmljs.registerGlobal(this)
+
+            const page = await viewLoader(path)
+
+            render(page, '#main', {
                 clear: true
-            });
+            })
         },
 
         loadScript: async (path) => {
@@ -88,6 +87,7 @@
 
     routines.openPage('page1.js')
 
+    htmljs.restoreGlobal()
 </script>
 </body>
 </html>
