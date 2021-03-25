@@ -18,6 +18,7 @@ const view = [
             a('/', 'Home'),
             a('/contacts', 'Contacts'),
             a('/catalog/category1/product2', 'Product'),
+            a('/not-found', 'Not found'),
         ], {
             justify: "center"
         })
@@ -31,12 +32,11 @@ render(view, "#app")
 
 const renderPage = (text) => render([text], "#h1")
 
-router()
-    .addRoutes({
-        "/": () => renderPage('root'),
-        "/contacts": () => renderPage('contacts'),
-        "/catalog/:category/:product": () => renderPage('products')
-    })
-    .listen()
-    .exec()
+router({
+    "404": () => renderPage('404 page not found')
+}).addRoutes({
+    "/": () => renderPage('root'),
+    "/contacts": () => renderPage('contacts'),
+    "/catalog/:category/:product": () => renderPage('products')
+}).listen().exec()
 

@@ -1,33 +1,29 @@
 export class Router {
-    routes = []
-    route = '/'
-    mode = null
-    ignore = '[data-route-ignore]'
-    root = ''
+    version = "0.1.0"
+    _routes = []
+    _route = '/'
+    _mode = null
+    _ignore = '[data-route-ignore]'
+    _404 = () => {}
 
     constructor(options = {}) {
         this.options = Object.assign({}, this.options, options)
 
-        if (this.options.root) this.root = this.options.root
-        if (this.options.mode) this.mode = this.options.mode
-        if (this.options.ignore) this.ignore = this.options.ignore
+        if (this.options.mode) this._mode = this.options.mode
+        if (this.options.ignore) this._ignore = this.options.ignore
         if (this.options.routes) this.addRoutes(this.options.routes)
+        if (this.options["404"] && typeof this.options["404"] === "function") this._404 = this.options["404"]
     }
 
     clearSlashes(path) {
         return path.replace(/\/$/, '').replace(/^\//, '')
     }
 
-    setRoot(root){
-        this.root = root
-        return this
-    }
-
     index(path){
         let exists = -1
 
-        for(let i = 0; i < this.routes.length; i++) {
-            if (this.routes[i].path === path) {
+        for(let i = 0; i < this._routes.length; i++) {
+            if (this._routes[i].path === path) {
                 exists = i
                 break
             }
@@ -48,7 +44,8 @@ export class Router {
             } )
         } else if (typeof routes === "object") {
             for (let key in routes) {
-                this[fn](key, routes[key])
+                if (routes.hasOwnProperty(key))
+                    this[fn](key, routes[key])
             }
         }
 
@@ -56,11 +53,10 @@ export class Router {
 
     addRoute(path, callback){
         if (path && !this.routeExists(path)) {
-            let _path = this.root + path
-            this.routes.push({
-                path: _path,
+            this._routes.push({
+                path: path,
                 callback: callback,
-                pattern: new RegExp('^' + _path.replace(/:\w+/g,'(\\w+)') + '$'),
+                pattern: new RegExp('^' + (path).replace(/:\w+/g,'(\\w+)') + '$'),
             })
         }
 
@@ -72,10 +68,14 @@ export class Router {
         return this
     }
 
-    updRoute(path, cb){
+    updRoute(path, route){
         const i = this.index(path)
+
         if (i === -1) return
-        this.routes[i].callback = cb
+
+        if (route && route.path) this._routes[i].path = route.path
+        if (route && route.callback) this._routes[i].callback = route.callback
+
         return this
     }
 
@@ -85,7 +85,8 @@ export class Router {
     }
 
     delRoute(path){
-        delete this.routes[path]
+        if (this.routeExists(path))
+            delete this._routes[path]
 
         return this
     }
@@ -93,9 +94,9 @@ export class Router {
     findRoute(path){
         let result
 
-        for (let i = 0; i < this.routes.length; i++) {
-            if (path.match(this.routes[i].pattern)) {
-                result = this.routes[i]
+        for (let i = 0; i < this._routes.length; i++) {
+            if (path.match(this._routes[i].pattern)) {
+                result = this._routes[i]
                 break
             }
         }
@@ -104,22 +105,31 @@ export class Router {
     }
 
     exec(loc = document.location, pushState = false){
-        const url = new URL(loc)
-        const path = url.pathname
-        const route = this.findRoute(path)
-        const cb = route.callback
+        let url, path, route
 
-        history.pushState(null, null, loc)
+        url = new URL(loc)
+        path = url.pathname
+        route = this.findRoute(path)
 
-        if (typeof cb === "function") {
-            cb.apply(this, url)
+        if (!route) {
+            this._404()
+            return this
         }
+
+        if (pushState)
+            history.pushState(null, null, path)
+
+        if (route && typeof route.callback === "function") {
+            route.callback.apply(this, [path])
+        }
+
+        this.route = path
 
         return this
     }
 
     listen(){
-        const {selector, ignore} = this.options
+        const {ignore} = this.options
 
         window.addEventListener('click', (e) => {
             const target = e.target
@@ -129,7 +139,7 @@ export class Router {
 
             e.preventDefault()
 
-            href = target.href || target.getAttribute('data-href')
+            href = target.href
 
             if (href) this.exec(href, true)
         }, false)
