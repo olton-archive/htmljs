@@ -1,60 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-    <div id="app"></div>
+<div id="app"></div>
+<script src="../../lib/htmljs.js"></script>
+<script>
+    html.extract();
 
-    <script src="../../lib/htmljs.js"></script>
-    <script>
-        ( () => {
-            htmljs.registerGlobal()
+    addStyle({
+        "body, #app": {
+            height: "100vh"
+        },
+        body: {
+            background: "#fff",
+            margin: 0,
+            padding: "0"
+        },
+        a: {
+            margin: "0 10px"
+        }
+    })
 
-            addStyle({
-                "body": {
-                    margin: 0,
-                    padding: 0
-                },
+    addMeta({
+        name: "author",
+        content: "Serhii Pimenov"
+    })
 
-                a: {
-                    margin: "10px"
-                }
-            })
+    addTitle("HTML.JS :: Create site in JS!")
 
-            const view = [
-                header([
-                    flexbox([
-                        a('/', 'Home'),
-                        a('/contacts', 'Contacts'),
-                        a('/catalog/category1/product2', 'Product'),
-                    ], {
-                        justify: "center"
-                    })
-                ]),
-                center(
-                    h1("", {id: "h1"})
-                )
+    const view = [
+        flexbox(
+            [
+                a("/page1", "Page 1"),
+                a("/page2", "Page 2"),
+                a("/page3", "Page 3"),
+                a("#", "Script", {
+                    data: {
+                        "no-route": ""
+                    },
+                    events: {onclick: `routines.loadScript('script.js')`}
+                }),
             ]
+        , {
+                id: "navigation",
+                justify: "center"
+        }),
 
-            render(view, "#app")
+        center(main("", {
+            id: "main"
+        }))
+    ]
 
-            const renderPage = (text) => htmljs.render([text], "#h1")
+    render(view, '#app')
 
-            const r = router()
-                .addRoutes({
-                    "/": () => renderPage('root'),
-                    "/contacts": () => renderPage('contacts'),
-                    "/catalog/:category/:product": () => renderPage('products')
-                })
-                .listen()
-                .exec()
+    window.routines = {
+        openPage: async function(path) {
+            html.extract(this)
 
-            console.log(r._routes)
+            const page = await viewLoader(path)
 
-            htmljs.restoreGlobal()
-        })()
-    </script>
+            render(page, '#main', {
+                clear: true
+            })
+        },
+
+        loadScript: async (path) => await htmljs.jsLoader(path)
+    }
+
+    const routeLinks = document.querySelectorAll("#navigation > a:not([data-no-route])")
+    routeLinks.forEach( link => {
+        link.addEventListener("click", e =>  {
+            const href = e.target.getAttribute("href")
+
+            if (!href || href === "#") return
+
+            routines.openPage(href.substr(1) + ".js")
+
+            e.preventDefault()
+        })
+    } )
+
+    routines.openPage('page1.js')
+
+    htmljs.restoreGlobal()
+</script>
 </body>
 </html>

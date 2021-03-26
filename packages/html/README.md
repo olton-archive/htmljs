@@ -69,7 +69,7 @@ Also, you can use `render` directly
     <script src="../lib/html.js"></script>
     <script>
         (function(){
-            html.registerGlobal();
+            html.extract();
 
             const articleView = article([
                 h1("This is a title"),
@@ -92,7 +92,7 @@ Also, you can use `render` directly
 
             render(view, document.querySelector('#app'));
 
-            html.restoreGlobal();
+            html.restore();
         })()
     </script>
 </body>

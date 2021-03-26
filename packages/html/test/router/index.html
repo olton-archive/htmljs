@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="../../lib/htmljs.js"></script>
+    <script>
+        ( () => {
+            html.extract()
+
+            addStyle({
+                "body": {
+                    margin: 0,
+                    padding: 0
+                },
+
+                a: {
+                    margin: "10px"
+                }
+            })
+
+            const view = [
+                header([
+                    flexbox([
+                        a('/', 'Home'),
+                        a('/contacts', 'Contacts'),
+                        a('/catalog/category1/product2', 'Product'),
+                    ], {
+                        justify: "center"
+                    })
+                ]),
+                center(
+                    h1("", {id: "h1"})
+                )
+            ]
+
+            render(view, "#app")
+
+            const renderPage = (text) => html.render([text], "#h1")
+
+            const r = router()
+                .addRoutes({
+                    "/": () => renderPage('root'),
+                    "/contacts": () => renderPage('contacts'),
+                    "/catalog/:category/:product": () => renderPage('products')
+                })
+                .listen()
+                .exec()
+
+            html.restore()
+        })()
+    </script>
+</body>
+</html>

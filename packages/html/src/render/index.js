@@ -1,19 +1,19 @@
 import {parser} from "../parser"
 
-export const render = (view = [], mountTo = document.body, options = {}) => {
-    let html, mount
+export const render = (view = [], renderTo = document.body, options = {}) => {
+    let html, renderPoint
 
 
     const {clear = true, where = 'beforeend'} = options
 
-    mount = typeof mountTo === "string" ? document.querySelector(mountTo) : mountTo
+    renderPoint = typeof renderTo === "string" ? document.querySelector(renderTo) : renderTo
 
-    if (!mount) {
-        mount = document.body
+    if (!renderPoint) {
+        renderPoint = document.body
     }
 
     if (clear) {
-        mount.innerHTML = ""
+        renderPoint.innerHTML = ""
     }
 
     if (!Array.isArray(view)) {
@@ -21,5 +21,5 @@ export const render = (view = [], mountTo = document.body, options = {}) => {
     }
 
     html = view.map( parser ).join("")
-    mount.insertAdjacentHTML(where, html)
+    renderPoint.insertAdjacentHTML(where, html)
 }

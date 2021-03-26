@@ -9,7 +9,7 @@
 
     <script src="../../lib/htmljs.js"></script>
     <script>
-        htmljs.registerGlobal()
+        html.extract()
 
         addStyle({
             body: {
@@ -95,7 +95,7 @@
             const inp = document.querySelector("#input")
             const val = inp.value
 
-            htmljs.registerGlobal(this)
+            html.extract(this)
 
             render(
                 div([
@@ -122,7 +122,7 @@
             } )
         }
 
-        htmljs.restoreGlobal()
+        html.restore()
     </script>
 </body>
 </html>

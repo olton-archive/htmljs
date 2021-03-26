@@ -27,38 +27,36 @@ You can use **HtmlJS** with `Webpack`, `Parcel` or other builders or `directly` 
 <div id="app"></div>
 <script src="../../lib/html.js"></script>
 <script>
-    (function(){
-        html.registerGlobal();
+    html.extract(); // Extract functions to global context, also you can define specified context
 
-        addStyle({
-            "body, #app": {
-                height: "100vh"
-            },
-            "body": {
-                background: "#ccc",
-                margin: 0,
-                padding: 0
+    addStyle({
+        "body, #app": {
+            height: "100vh"
+        },
+        "body": {
+            background: "#ccc",
+            margin: 0,
+            padding: 0
+        }
+    })
+
+    const view = [
+        flexbox([
+            h1("Welcome to HtmlJS!"),
+            figureSimple("https://picsum.photos/200", "Caption", "alt")
+        ], {
+            justify: "center",
+            align: "center",
+            direction: "column",
+            style: {
+                height: "100%"
             }
-        })
+        }),
+    ]
 
-        const view = [
-            flexbox([
-                h1("Welcome to HtmlJS!"),
-                figureSimple("https://picsum.photos/200", "Caption", "alt")
-            ], {
-                justify: "center",
-                align: "center",
-                direction: "column",
-                style: {
-                    height: "100%"
-                }
-            }),
-        ]
+    render(view, document.querySelector('#app'));
 
-        render(view, document.querySelector('#app'));
-
-        html.restoreGlobal();
-    })()
+    html.restore(); // Remove HTML functions from global or specified context 
 </script>
 </body>
 </html>
