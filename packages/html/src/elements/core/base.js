@@ -39,6 +39,7 @@ export default class BaseElement {
         if (this.classes) attr.push(`class="${this.classes}"`)
         if (this.styles) attr.push(`style="${this.styles}"`)
         if (this.dataSet) attr.push(this.dataSet)
+        if (this.aria) attr.push(this.aria)
 
         return attr
     }
@@ -67,7 +68,7 @@ export default class BaseElement {
         if (aria === {}) return ""
 
         for(let key in aria) {
-            _.push(`data-${key.toLowerCase()}="${aria[key]}"`)
+            _.push(`aria-${key.toLowerCase()}="${aria[key]}"`)
         }
 
         return _.join(" ")
